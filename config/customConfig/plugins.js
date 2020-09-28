@@ -12,11 +12,11 @@ function addPlugins(defaultPlugins){
         plugins.push(new BundleAnalyzerPlugin())
     }
 
-    // 引入全局zj_local_storage库
+    // 引入全局local_storage_demo库
 
     plugins.push(
         new webpack.ProvidePlugin({
-            zj_local_storage: 'zj_local_storage'    
+            local_storage_demo: 'local_storage_demo'    
         })
     )
     

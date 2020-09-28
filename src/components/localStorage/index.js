@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Table } from 'antd';
 import "./index.css";
-import zj_local_storage from "zj_local_storage";
+import local_storage_demo from "local_storage_demo";
 import { handleStorager } from "../../utils";
 
 
@@ -20,12 +20,12 @@ const columns = [
 
 
 function Index() {
-  const initStaterList = handleStorager(zj_local_storage.storager);
+  const initStaterList = handleStorager(local_storage_demo.storager);
   const [storagerList, setStorager] = useState(initStaterList)
 
   useEffect(() => {
     function listerStorage() {
-      setStorager(() => handleStorager(zj_local_storage.storager))
+      setStorager(() => handleStorager(local_storage_demo.storager))
     }
     window.addEventListener("storage", listerStorage,false);
 

@@ -8,14 +8,14 @@ function addLoader(defauleModuleLoader) {
         loader: 'string-replace-loader',
         options: {
             multiple: [
-                { search: 'window.localStorage.setItem', replace: 'zj_local_storage.set' },
-                { search: 'localStorage.setItem', replace: 'zj_local_storage.set' },
-                { search: 'window.localStorage.getItem', replace: 'zj_local_storage.get' },
-                { search: 'localStorage.getItem', replace: 'zj_local_storage.get' },
-                { search: 'window.localStorage.removeItem', replace: 'zj_local_storage.remove' },
-                { search: 'localStorage.removeItem', replace: 'zj_local_storage.remove' },
-                { search: 'window.localStorage.clear', replace: 'zj_local_storage.clear' },
-                { search: 'localStorage.clear', replace: 'zj_local_storage.clear' },
+                { search: 'window.localStorage.setItem', replace: 'local_storage_demo.set' },
+                { search: 'localStorage.setItem', replace: 'local_storage_demo.set' },
+                { search: 'window.localStorage.getItem', replace: 'local_storage_demo.get' },
+                { search: 'localStorage.getItem', replace: 'local_storage_demo.get' },
+                { search: 'window.localStorage.removeItem', replace: 'local_storage_demo.remove' },
+                { search: 'localStorage.removeItem', replace: 'local_storage_demo.remove' },
+                { search: 'window.localStorage.clear', replace: 'local_storage_demo.clear' },
+                { search: 'localStorage.clear', replace: 'local_storage_demo.clear' },
             ]
         }
     }

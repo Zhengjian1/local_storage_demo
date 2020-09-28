@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'antd';
 import "./index.css";
-import zj_local_storage from "zj_local_storage";
+import local_storage_demo from "local_storage_demo";
 import { reload,handleNotification } from '../../../utils';
 
 function Index() {
@@ -12,7 +12,7 @@ function Index() {
   }
 
   function onClick(){
-    zj_local_storage.clear(callback)
+    local_storage_demo.clear(callback)
   }
 
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
 import "./index.css";
-import zj_local_storage from "zj_local_storage";
+import local_storage_demo from "local_storage_demo";
 import { reload, failCb,handleNotification } from '../../../utils';
 
 const layout = {
@@ -24,7 +24,7 @@ function Index() {
 
   const onFinish = values => {
     const { key, value } = values;
-    zj_local_storage.set(key, value, successCb, failCb)
+    local_storage_demo.set(key, value, successCb, failCb)
   };
 
   return (
