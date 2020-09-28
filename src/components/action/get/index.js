@@ -1,31 +1,27 @@
-import React, { useState } from 'react';
-import { Form, Input } from 'antd';
+import React from 'react';
+import { Form, Input, Button } from 'antd';
 import "./index.css";
-import {  failCb,handleNotification } from '../../../utils';
+import { failCb, handleNotification } from '../../../utils';
 
-const { Search } = Input;
 
 function Index() {
-  const [key, setKey] = useState("");
-  const [value, setValue] = useState("");
   const [form] = Form.useForm();
 
   function successCb(key, value) {
     handleNotification(`key为${key},获取的值为:${value}`);
     form.resetFields();
-    setKey(() => key);
-    setValue(() => value);
   }
 
-  function handleGet(k) {
-    window.localStorage.getItem(k, successCb, failCb)
+  function handleGet(values) {
+    window.localStorage.getItem(values.key, successCb, failCb)
   }
 
   return (
     <>
       <Form
         form={form}
-        name="basic"
+        layout="inline"
+        onFinish={handleGet}
         initialValues={{ remember: true }}
       >
         <Form.Item
@@ -34,11 +30,15 @@ function Index() {
           placeholder="key"
           rules={[{ required: true, message: 'Please input localStorage key!' }]}
         >
-          <Search enterButton="submit" size="large" onSearch={k => handleGet(k)} />
+          <Input />
         </Form.Item>
 
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
       </Form>
-      <h3>{`key为${key},获取的值为:${value}`}</h3>
     </>
   );
 }

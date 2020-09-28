@@ -1,11 +1,8 @@
 import React from 'react';
-import { Form, Input } from 'antd';
+import { Form, Input, Button } from 'antd';
 import "./index.css";
 import zj_local_storage from "zj_local_storage";
 import { reload,failCb, handleNotification } from '../../../utils';
-
-const { Search } = Input;
-
 
 function Index() {
   const [form] = Form.useForm();
@@ -15,24 +12,32 @@ function Index() {
     reload();
   }
 
-  function handleRemove(val) {
-    zj_local_storage.remove(val, successCb,failCb)
+  function handleRemove(values) {
+    zj_local_storage.remove(values.key, successCb,failCb)
   }
 
   return (
     <>
     <Form
       form={form}
+      layout="inline"
+      onFinish={handleRemove}
       initialValues={{ remember: true }}
     >
       <Form.Item
-        label="key"
-        name="key"
-        placeholder="key"
-        rules={[{ required: true, message: 'Please input localStorage key!' }]}
-      >
-        <Search enterButton="submit" size="large" onSearch={k => handleRemove(k)} />
-      </Form.Item>
+          label="key"
+          name="key"
+          placeholder="key"
+          rules={[{ required: true, message: 'Please input localStorage key!' }]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
 
     </Form>
   </>
