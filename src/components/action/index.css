@@ -1,0 +1,12 @@
+.site-card-border-less-wrapper {
+    padding: 10px;
+    background: #ececec;
+  }
+
+  .action_wrap {
+    display: "flex";
+    flex-direction: "column";
+    justify-content: "space-around";
+    align-items: "center";
+    min-height: calc(100vh - 100px),
+  }
