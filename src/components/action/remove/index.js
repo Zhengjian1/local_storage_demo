@@ -30,7 +30,7 @@ function Index() {
           placeholder="key"
           rules={[{ required: true, message: 'Please input localStorage key!' }]}
         >
-          <Input />
+          <Input allowClear />
         </Form.Item>
 
         <Form.Item>

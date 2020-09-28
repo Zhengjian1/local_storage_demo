@@ -40,7 +40,7 @@ function Index() {
         name="key"
         rules={[{ required: true, message: 'Please input localStorage key!' }]}
       >
-        <Input />
+        <Input allowClear />
       </Form.Item>
 
       <Form.Item
@@ -48,7 +48,7 @@ function Index() {
         name="value"
         rules={[{ required: true, message: 'Please input localStorage value!' }]}
       >
-        <Input />
+        <Input allowClear />
       </Form.Item>
 
       <Form.Item {...tailLayout}>
