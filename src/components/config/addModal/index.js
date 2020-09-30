@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Input, Button, Modal, message } from 'antd';
 import Idb from 'idb-js';
 import db_storage_config from '../../../db_config';
-import { random } from '../../../utils';
+import { random } from '@utils';
 
 let createId = random(1000000, 9999999);
 const layout = {
@@ -29,7 +29,7 @@ function Index(porps) {
                         ...values,
                     },
                     success: () => {
-                        message.success(values, '添加成功');
+                        // message.success('添加成功');
                     },
                 });
             },

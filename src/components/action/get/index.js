@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
 import './index.css';
-import { failCb, handleNotification } from '../../../utils';
+import { failCb, handleNotification } from '@utils';
 
 function Index() {
     const [form] = Form.useForm();

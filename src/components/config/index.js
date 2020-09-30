@@ -16,15 +16,7 @@ const initialState = {
 function reducer(state, action) {
     switch (action.type) {
         case 'add':
-            return {
-                ...state,
-                ...action.payload,
-            };
         case 'save':
-            return {
-                ...state,
-                ...action.payload,
-            };
         case 'closeModal':
             return {
                 ...state,
@@ -35,38 +27,24 @@ function reducer(state, action) {
     }
 }
 function Index() {
-    const columns = [
-        {
-            title: 'key',
-            dataIndex: 'key',
-            key: 'key',
-        },
-        {
-            title: 'fromPage',
-            dataIndex: 'fromPage',
-            key: 'fromPage',
-        },
-        {
-            title: 'use',
-            dataIndex: 'use',
-            key: 'use',
-        },
-        {
-            title: 'des',
-            dataIndex: 'des',
-            key: 'des',
-        },
-        {
-            title: 'Action',
-            dataIndex: 'Action',
-            key: 'Action',
-            render: (text, record) => (
-                <Popconfirm title="确信删除?" onConfirm={() => handleDel(record.id)}>
-                    <a>删除</a>
-                </Popconfirm>
-            ),
-        },
-    ];
+    function createColumns() {
+        const columnsK = ['key', 'fromPage', 'use', 'des', 'action'];
+        const columns = columnsK.map((item) => ({
+            title: item,
+            dataIndex: item,
+            key: item,
+        }));
+        // 最后一项加上点击事件
+        columns[columns.length - 1].render = (text, record) => (
+            <Popconfirm title="确信删除?" onConfirm={() => handleDel(record.id)}>
+                <a>删除</a>
+            </Popconfirm>
+        );
+
+        return columns;
+    }
+
+    const columns = createColumns();
 
     const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -96,32 +74,27 @@ function Index() {
                                 },
                             });
 
+                            // 为了可视化配置列表，先用全局变量
                             window.local_storage_demo = createLocalStorage(storageList);
                         }
                     },
                 });
             },
             (err) => {
-                console.log(err);
+                console.error(err);
             },
         );
 
         return () => {
             Idb(db_storage_config).then(
                 (storage_db) => {
-                    // /**
-                    // * @method 清空某张表的数据
-                    // * */
-                    // storage_db.clear_table({
-                    //     tableName: 'storage_list'
-                    // });
                     /**
                      * @method close_db 关闭此数据库
                      * */
                     storage_db.close_db();
                 },
                 (err) => {
-                    console.log(err);
+                    console.error(err);
                 },
             );
         };

@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Input, Button } from 'antd';
 import './index.css';
 // import local_storage_demo from 'local_storage_demo';
-import { reload, failCb, handleNotification } from '../../../utils';
+import { reload, failCb, handleNotification } from '@utils';
 
 const layout = {
     labelCol: { span: 8 },

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, Table } from 'antd';
 import './index.css';
 import local_storage_demo from 'local_storage_demo';
-import { handleStorager } from '../../utils';
+import { handleStorager } from '@utils';
 
 const columns = [
     {

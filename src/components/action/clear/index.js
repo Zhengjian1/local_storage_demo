@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from 'antd';
 import './index.css';
 // import local_storage_demo from 'local_storage_demo';
-import { reload, handleNotification } from '../../../utils';
+import { reload, handleNotification } from '@utils';
 
 function Index() {
     function callback() {
