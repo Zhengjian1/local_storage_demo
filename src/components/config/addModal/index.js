@@ -1,17 +1,16 @@
 import React from 'react';
 import { Form, Input, Button, Modal, message } from 'antd';
-import './index.css';
 import Idb from 'idb-js';
 import db_storage_config from '../../../db_config';
 import { random } from '../../../utils';
 
 let createId = random(1000000, 9999999);
 const layout = {
-    labelCol: { span: 8 },
-    wrapperCol: { span: 16 },
+    labelCol: { span: 6 },
+    wrapperCol: { span: 18 },
 };
 const tailLayout = {
-    wrapperCol: { offset: 8, span: 16 },
+    wrapperCol: { offset: 6, span: 18 },
 };
 
 function Index(porps) {
@@ -30,7 +29,7 @@ function Index(porps) {
                         ...values,
                     },
                     success: () => {
-                        console.log(values, '添加成功');
+                        message.success(values, '添加成功');
                     },
                 });
             },
