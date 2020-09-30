@@ -26,7 +26,7 @@ function checkGet(args) {
             }            
             break;
         default:
-            errorMsg = `请先去项目的src/constants文件配置${key}键`
+            errorMsg = `请先去检查配置的列表配置${key}键`
 
     }
 

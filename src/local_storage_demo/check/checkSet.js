@@ -13,7 +13,7 @@ function checkSet(agrs){
     // 校验存储是否配置表了
     switch(true){
         case !storageList.hasOwnProperty(key):
-            errorMsg = `先去项目的src/constants文件配置${key}键`;
+            errorMsg = `请先去检查配置的列表配置${key}键配置${key}键`;
             break;
         case storager.hasOwnProperty(key):
             errorMsg = `${key}键已经被使用，请更换key值`;

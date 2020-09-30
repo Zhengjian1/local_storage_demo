@@ -174,7 +174,7 @@ function Index() {
 
     return (
         <div className="site-card-border-less-wrapper">
-            <Card title="src/constants手动配置的列表" bordered={false} style={{ width: '100%', minHeight: '100vh' }}>
+            <Card title="localStorage检查配置的列表" bordered={false} style={{ width: '100%', minHeight: '100vh' }}>
                 <Button onClick={handleAdd} type="primary" style={{ marginBottom: 16 }}>
                     添加
                 </Button>
