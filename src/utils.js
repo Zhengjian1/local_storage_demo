@@ -24,9 +24,18 @@ function failCb(message) {
 }
 
 function handleNotification(message) {
-    notification.open({
+    notification.success({
         message,
     });
 }
 
-export { handleStorager, reload, failCb, handleNotification };
+function handleStorageList(storageList) {
+    return storageList.reduce((prev, cur) => {
+        const key = cur.key;
+        // 检查配置的列表key是否重复
+        prev[key] = cur;
+        return prev;
+    }, {});
+}
+
+export { handleStorager, reload, failCb, handleNotification,handleStorageList };

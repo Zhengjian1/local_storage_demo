@@ -18,12 +18,12 @@
  * ******************/
 
 const STORAGELIST = [
-    {
-        key: 'demo',
-        fromPage: '测试页',
-        use: '测试用的',
-        des: '退出清除',
-    },
+    // {
+    //     key: 'demo',
+    //     fromPage: '测试页',
+    //     use: '测试用的',
+    //     des: '退出清除',
+    // },
 ];
 
 module.exports = STORAGELIST;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'antd';
 import './index.css';
-import local_storage_demo from 'local_storage_demo';
+// import local_storage_demo from 'local_storage_demo';
 import { reload, handleNotification } from '../../../utils';
 
 function Index() {
@@ -11,7 +11,7 @@ function Index() {
     }
 
     function onClick() {
-        local_storage_demo.clear(callback);
+        window.local_storage_demo.clear(callback);
     }
 
     return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
 import './index.css';
-import local_storage_demo from 'local_storage_demo';
+// import local_storage_demo from 'local_storage_demo';
 import { reload, failCb, handleNotification } from '../../../utils';
 
 function Index() {
@@ -13,7 +13,7 @@ function Index() {
     }
 
     function handleRemove(values) {
-        local_storage_demo.remove(values.key, successCb, failCb);
+        window.local_storage_demo.remove(values.key, successCb, failCb);
     }
 
     return (
