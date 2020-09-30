@@ -25,10 +25,10 @@ function Index() {
                     <Panel header="localStorage获取" key="2">
                         <Get />
                     </Panel>
-                    <Panel header="localStorage移除单个" key="3">
+                    <Panel header="localStorage移除" key="3">
                         <Remove />
                     </Panel>
-                    <Panel header="localStorage清除所有" key="4">
+                    <Panel header="localStorage清空" key="4">
                         <Clear />
                     </Panel>
                 </Collapse>

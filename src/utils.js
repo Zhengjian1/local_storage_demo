@@ -14,7 +14,7 @@ function handleStorager(storager) {
 }
 
 function reload() {
-    window.location.reload(true);
+    delay(500).then(() => window.location.reload(true));
 }
 
 function failCb(message) {
@@ -29,13 +29,8 @@ function handleNotification(message) {
     });
 }
 
-function handleStorageList(storageList) {
-    return storageList.reduce((prev, cur) => {
-        const key = cur.key;
-        // 检查配置的列表key是否重复
-        prev[key] = cur;
-        return prev;
-    }, {});
+function delay(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export { handleStorager, reload, failCb, handleNotification,handleStorageList };
+export { handleStorager, reload, failCb, handleNotification };
