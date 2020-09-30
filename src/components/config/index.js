@@ -61,8 +61,8 @@ function Index() {
             dataIndex: 'Action',
             key: 'Action',
             render: (text, record) => (
-                <Popconfirm title="Sure to delete?" onConfirm={() => handleDel(record.id)}>
-                    <a>Delete</a>
+                <Popconfirm title="确信删除?" onConfirm={() => handleDel(record.id)}>
+                    <a>删除</a>
                 </Popconfirm>
             ),
         },
@@ -137,7 +137,6 @@ function Index() {
     }
 
     function handleDel(id) {
-        console.log(id);
         Idb(db_storage_config).then(
             (storage_db) => {
                 /**
