@@ -14,10 +14,8 @@ function Index() {
             <Card
                 title="localStorage操作"
                 bordered={false}
-                style={{
-                    width: '100%',
-                    minHeight: '100vh',
-                }}>
+                headStyle={{ textAlign: 'center' }}
+                style={{ width: '100%', minHeight: '100vh' }}>
                 <Collapse className="action-wrap" defaultActiveKey={['1']}>
                     <Panel header="localStorage设置" key="1">
                         <Set />

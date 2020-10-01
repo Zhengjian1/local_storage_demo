@@ -34,7 +34,11 @@ function Index() {
 
     return (
         <div className="site-card-border-less-wrapper">
-            <Card title="本地localStroage的列表" bordered={false} style={{ width: '100%', minHeight: '100vh' }}>
+            <Card
+                title="本地localStroage的列表"
+                bordered={false}
+                headStyle={{ textAlign: 'center' }}
+                style={{ width: '100%', minHeight: '100vh' }}>
                 <Table dataSource={storagerList} columns={columns} pagination={false} />
             </Card>
         </div>
