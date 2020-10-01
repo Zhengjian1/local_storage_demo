@@ -2,9 +2,7 @@ import React, { useEffect, useReducer } from 'react';
 import { Card, Table, Button, Popconfirm, message } from 'antd';
 import './index.css';
 import AddModal from './addModal';
-import Idb from 'idb-js';
-import db_storage_config from '../../db_config';
-import { reload } from '../../utils';
+import { getAll, del, close } from '@indexed_DB';
 const createLocalStorage = require('../../local_storage_demo/index');
 
 const initialState = {
@@ -16,6 +14,7 @@ const initialState = {
 function reducer(state, action) {
     switch (action.type) {
         case 'add':
+        case 'del':
         case 'save':
         case 'closeModal':
             return {
@@ -49,55 +48,26 @@ function Index() {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     useEffect(() => {
-        Idb(db_storage_config).then(
-            (storage_db) => {
-                /**
-                 * @method 查询某张表的所有数据
-                 * */
-                storage_db.queryAll({
-                    tableName: 'storage_list',
-                    success: (res) => {
-                        if (res.length) {
-                            const storageList = [];
-                            res.forEach((item) => {
-                                // delete item.id
-                                if (Object.keys(item).length) {
-                                    storageList.push(item);
-                                }
-                            });
+        getAll().then((res) => {
+            const storageList = [];
+            res.forEach((item) => {
+                if (Object.keys(item).length) {
+                    storageList.push(item);
+                }
+            });
 
-                            dispatch({
-                                type: 'save',
-                                payload: {
-                                    visible: false,
-                                    storageList: [...storageList],
-                                },
-                            });
-
-                            // 为了可视化配置列表，先用全局变量
-                            window.local_storage_demo = createLocalStorage(storageList);
-                        }
-                    },
-                });
-            },
-            (err) => {
-                console.error(err);
-            },
-        );
-
-        return () => {
-            Idb(db_storage_config).then(
-                (storage_db) => {
-                    /**
-                     * @method close_db 关闭此数据库
-                     * */
-                    storage_db.close_db();
+            dispatch({
+                type: 'save',
+                payload: {
+                    visible: false,
+                    storageList: [...storageList],
                 },
-                (err) => {
-                    console.error(err);
-                },
-            );
-        };
+            });
+
+            // 为了可视化配置列表，先用全局变量
+            window.local_storage_demo = createLocalStorage(storageList);
+        });
+        return close;
     }, [state.actionType]);
 
     function handleAdd() {
@@ -110,24 +80,15 @@ function Index() {
     }
 
     function handleDel(id) {
-        Idb(db_storage_config).then(
-            (storage_db) => {
-                /**
-                 * @method 删除数据
-                 * */
-                storage_db.delete_by_primaryKey({
-                    tableName: 'storage_list',
-                    target: id,
-                    success: () => {
-                        message.success('删除成功');
-                        reload();
-                    },
-                });
-            },
-            (err) => {
-                console.log(err);
-            },
-        );
+        del(id).then(() => {
+            dispatch({
+                type: 'del',
+                payload: {
+                    actionType: `del${id}`,
+                },
+            });
+            message.success('删除成功');
+        });
     }
 
     function handleCancel(actionType) {

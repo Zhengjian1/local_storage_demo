@@ -1,4 +1,3 @@
-const utils = require("../../src/local_storage_demo/utils");
 const paths = require("../paths");
 
 const alias = {}
@@ -6,6 +5,7 @@ const alias = {}
 function addAlias(defauleAlias) {
     
     alias["@utils"] = `${paths.appSrc}/utils`;
+    alias["@indexed_DB"] = `${paths.appSrc}/indexed_DB`;
 
     return alias;
 }

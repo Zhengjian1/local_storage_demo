@@ -1,8 +1,7 @@
 import React from 'react';
 import { Form, Input, Button, Modal, message } from 'antd';
-import Idb from 'idb-js';
-import db_storage_config from '../../../db_config';
 import { random } from '@utils';
+import { add, getAll } from '@indexed_DB';
 
 let createId = random(1000000, 9999999);
 const layout = {
@@ -16,57 +15,26 @@ const tailLayout = {
 function Index(porps) {
     const [form] = Form.useForm();
 
-    function save(values) {
-        Idb(db_storage_config).then(
-            (storage_db) => {
-                /**
-                 * @method 增加单条数据
-                 * */
-                storage_db.insert({
-                    tableName: 'storage_list',
-                    data: {
-                        id: createId++,
-                        ...values,
-                    },
-                    success: () => {
-                        // message.success('添加成功');
-                    },
-                });
-            },
-            (err) => {
-                console.log(err);
-            },
-        );
-    }
-
     const onFinish = (values) => {
-        Idb(db_storage_config).then(
-            (storage_db) => {
-                // 先获取已经存储的，不能重复存储
-                storage_db.queryAll({
-                    tableName: 'storage_list',
-                    success: (res) => {
-                        let hasRename = false;
-                        res.forEach((each) => {
-                            if (values.key === each.key) {
-                                hasRename = true;
-                            }
-                        });
-                        if (hasRename) {
-                            message.error(`${values.key}已经重名,请更换`);
-                        } else {
-                            save(values);
-                            form.resetFields();
-                            porps.handleCancel(`add${createId}`);
-                            message.success(`${values.key}存储成功`);
-                        }
-                    },
-                });
-            },
-            (err) => {
-                console.log(err);
-            },
-        );
+        getAll().then((res) => {
+            let hasRename = false;
+            res.forEach((each) => {
+                if (values.key === each.key) {
+                    hasRename = true;
+                }
+            });
+            if (hasRename) {
+                message.error(`${values.key}已经重名,请更换`);
+            } else {
+                add({
+                    id: createId++,
+                    ...values,
+                }).then(() => message.success(`${values.key}增加成功`));
+
+                form.resetFields();
+                porps.handleCancel(`add${createId}`);
+            }
+        });
     };
 
     return (

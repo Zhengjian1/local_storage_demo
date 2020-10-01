@@ -14,7 +14,7 @@ function handleStorager(storager) {
 }
 
 function reload() {
-    delay(400).then(() => window.location.reload(true));
+    delay(300).then(() => window.location.reload(true));
 }
 
 function failCb(message) {
