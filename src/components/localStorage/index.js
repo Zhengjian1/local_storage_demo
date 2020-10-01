@@ -4,18 +4,11 @@ import './index.css';
 import local_storage_demo from 'local_storage_demo';
 import { handleStorager } from '@utils';
 
-const columns = [
-    {
-        title: 'key',
-        dataIndex: 'key',
-        key: 'key',
-    },
-    {
-        title: 'value',
-        dataIndex: 'value',
-        key: 'value',
-    },
-];
+const columns = ['key', 'value'].map((item) => ({
+    title: item,
+    dataIndex: item,
+    key: item,
+}));
 
 function Index() {
     const initStaterList = handleStorager(local_storage_demo.storager);

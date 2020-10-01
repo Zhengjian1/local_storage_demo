@@ -5,11 +5,11 @@ import './index.css';
 import { reload, failCb, handleNotification } from '@utils';
 
 const layout = {
-    labelCol: { span: 8 },
-    wrapperCol: { span: 16 },
+    labelCol: { span: 4 },
+    wrapperCol: { span: 20 },
 };
 const tailLayout = {
-    wrapperCol: { offset: 8, span: 16 },
+    wrapperCol: { offset: 4, span: 20 },
 };
 
 function Index() {
