@@ -16,17 +16,17 @@ function Index() {
                 bordered={false}
                 headStyle={{ textAlign: 'center' }}
                 style={{ width: '100%', minHeight: '100vh' }}>
-                <Collapse className="action-wrap" defaultActiveKey={['1']}>
-                    <Panel header="localStorage设置" key="1">
+                <Collapse defaultActiveKey={['1']}>
+                    <Panel header="设置" key="1">
                         <Set />
                     </Panel>
-                    <Panel header="localStorage获取" key="2">
+                    <Panel header="获取" key="2">
                         <Get />
                     </Panel>
-                    <Panel header="localStorage移除" key="3">
+                    <Panel header="移除" key="3">
                         <Remove />
                     </Panel>
-                    <Panel header="localStorage清空" key="4">
+                    <Panel header="清空" key="4">
                         <Clear />
                     </Panel>
                 </Collapse>

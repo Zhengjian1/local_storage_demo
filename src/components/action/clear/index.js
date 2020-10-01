@@ -16,8 +16,8 @@ function Index() {
 
     return (
         <div>
-            <Button type="primary" size="large" onClick={onClick}>
-                清除所有localStorage
+            <Button type="primary" onClick={onClick}>
+                Submit
             </Button>
         </div>
     );
