@@ -1,6 +1,5 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import Layout from './Layout';
+import routes from "./router";
 
-ReactDOM.render(<Layout />, document.getElementById('root'));
+ReactDOM.render(routes, document.getElementById('root'));

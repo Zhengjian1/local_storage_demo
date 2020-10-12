@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer, useCallback } from 'react';
 import { Card, Table, Button, Popconfirm, message } from 'antd';
 import './index.css';
 import AddModal from './addModal';
@@ -91,6 +91,10 @@ function Index() {
         });
     }
 
+    const memoizedHandleCancel = useCallback((actionType) => {
+        handleCancel(actionType)
+    },[])
+
     function handleCancel(actionType) {
         dispatch({
             type: 'closeModal',
@@ -112,7 +116,7 @@ function Index() {
                     添加
                 </Button>
                 <Table dataSource={[...state.storageList]} columns={columns} pagination={false} />
-                <AddModal visible={state.visible} handleCancel={handleCancel} />
+                <AddModal visible={state.visible} handleCancel={memoizedHandleCancel} />
             </Card>
         </div>
     );

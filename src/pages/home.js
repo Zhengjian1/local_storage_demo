@@ -1,10 +1,10 @@
 import React from 'react';
 import { Row, Col } from 'antd';
-import Config from './components/config/index';
-import LocalStorage from './components/localStorage/index';
-import Action from './components/action/index';
+import Config from '../components/config/index';
+import LocalStorage from '../components/localStorage/index';
+import Action from '../components/action/index';
 
-function Layout() {
+function Home() {
     return (
         <Row>
             <Col span={8}>
@@ -20,4 +20,4 @@ function Layout() {
     );
 }
 
-export default Layout;
+export default Home;

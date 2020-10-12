@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ memo } from 'react';
 import { Form, Input, Button, Modal, message } from 'antd';
 import { random } from '@utils';
 import { add, getAll } from '@indexed_DB';
@@ -69,4 +69,4 @@ function Index(porps) {
     );
 }
 
-export default Index;
+export default memo(Index);
