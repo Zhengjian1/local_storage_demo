@@ -8,6 +8,8 @@ import { IsPC } from "@utils"
 
 BScroll.use(NestedScroll)
 
+const isPc = IsPC(); 
+
 const _data1 = [
     '😀 😁 😂 🤣 😃 🙃 ',
     '👆🏻 outer scroll 👇🏻 ',
@@ -85,7 +87,7 @@ function Index() {
     }
 
     function popoverRender() {
-        if (IsPC()) {
+        if (isPc) {
             return (
                 <div className="popover">
                     <Popover content={popoverContent()} title="手机扫码预览" trigger="hover" >
@@ -95,13 +97,10 @@ function Index() {
             )
         }
 
-
     }
 
-
-
     return (
-        <div className="demo-component-wrap">
+        <div className={isPc ? "demo-component-wrap" : "demo-component-wrap-app"}>
             {popoverRender()}
             <div className="container">
                 <div className="outer-wrapper outerScroll">

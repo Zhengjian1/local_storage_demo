@@ -6,6 +6,14 @@
     overflow: hidden;
 }
 
+.demo-component-wrap-app {
+    margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+    background: #f1f2f3;
+    overflow: hidden;
+}
+
 .popover {
     padding: 15px 0 ;
     /* text-align: center; */
